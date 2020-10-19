@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Button, View, StyleSheet} from 'react-native';
+import {Button, View, StyleSheet, Text} from 'react-native';
 import authContext from '../../contexts/auth';
 
 const styles = StyleSheet.create({

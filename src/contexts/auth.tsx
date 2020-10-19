@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React, {createContext, useState} from 'react';
 import * as auth from '../services/api';
 
 interface AuthContextData {
@@ -8,14 +8,18 @@ interface AuthContextData {
 }
 
 const authContext = createContext<AuthContextData>({} as AuthContextData);
-async function signIn() {
-  const response = await auth.signIn();
-  console.log(response);
-}
 
 export const AuthProvider: React.FC = ({children}) => {
+  const [user, setUser] = useState<object | null>(null);
+
+  async function signIn() {
+    const response = await auth.signIn();
+
+    setUser(response.user);
+  }
+
   return (
-    <authContext.Provider value={{signed: false, user: {}, signIn}}>
+    <authContext.Provider value={{signed: !!user, user, signIn}}>
       {children}
     </authContext.Provider>
   );
