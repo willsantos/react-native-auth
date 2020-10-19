@@ -12,6 +12,7 @@ const Dashboard: React.FC = () => {
   function handleSignOut() {
     signOut();
   }
+
   return (
     <View style={styles.container}>
       <Button title="Sign Out" onPress={handleSignOut} />
