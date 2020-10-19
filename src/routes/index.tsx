@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View, ActivityIndicator, StyleSheet} from 'react-native';
-import authContext from '../contexts/auth';
+import {useAuth} from '../contexts/auth';
 import AppRoutes from './app.routes';
 
 import AuthRoutes from './auth.routes';
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 const Routes: React.FC = () => {
-  const {signed, loading} = useContext(authContext);
+  const {signed, loading} = useAuth();
 
   if (signed && loading) {
     return (
